@@ -24,6 +24,10 @@ public class Graph {
         this.adjacencyMatrix[to][from].setEdge(false);
     }
 
+    public Edge[][] getAdjacencyMatrix() {
+        return this.adjacencyMatrix;
+    }
+
     public int getOrder() {
         return adjacencyMatrix.length;
     }
