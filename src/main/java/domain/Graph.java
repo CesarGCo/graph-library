@@ -3,10 +3,10 @@ package main.java.domain;
 public class Graph {
     private Edge[][] adjacencyMatrix;
 
-    public Graph(int size) {
-        this.adjacencyMatrix = new Edge[size][size];
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
+    public Graph(int order) {
+        this.adjacencyMatrix = new Edge[order][order];
+        for (int i = 0; i < order; i++) {
+            for (int j = 0; j < order; j++) {
                 this.adjacencyMatrix[i][j] = new Edge();
             }
         }
