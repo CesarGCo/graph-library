@@ -1,8 +1,6 @@
 package main.java.controllers;
 import main.java.repositories.GraphRepository;
-import main.java.usecases.CreateGraphUSeCase;
-import main.java.usecases.GetGraphDensityUseCase;
-import main.java.usecases.addEdgeUseCase;
+import main.java.usecases.*;
 
 public class GraphController {
     public GraphRepository repository;
@@ -19,6 +17,16 @@ public class GraphController {
     public void addEdge(int from, int to, double weight) {
         addEdgeUseCase useCase = new addEdgeUseCase(repository);
         useCase.execute(from, to, weight);
+    }
+
+    public Integer getSize() {
+        GetSizeUseCase useCase = new GetSizeUseCase(repository);
+        return useCase.execute();
+    }
+
+    public Integer getOrder() {
+        GetOrderUseCase useCase = new GetOrderUseCase(repository);
+        return useCase.execute();
     }
 
     public Double getDensity() {
