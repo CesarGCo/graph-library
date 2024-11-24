@@ -33,4 +33,10 @@ public class GraphController {
         GetGraphDensityUseCase useCase = new GetGraphDensityUseCase(repository);
         return useCase.execute();
     }
+
+    public void BreadthFirstSearch(int startVertex) {
+        BreadthFirstSearchUseCase useCase = new BreadthFirstSearchUseCase(repository);
+        useCase.execute(startVertex);
+        return;
+    }
 }

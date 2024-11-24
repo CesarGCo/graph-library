@@ -1,16 +1,19 @@
 package main.java.usecases;
 import main.java.domain.Graph;
 import main.java.domain.Edge;
+import main.java.repositories.IGraphRepository;
+
 import java.util.LinkedList;
 
-public class BreadthFirstSearch {
-    private Graph graph;
+public class BreadthFirstSearchUseCase {
+    private final IGraphRepository repository;
 
-    public BreadthFirstSearch(Graph graph) {
-        this.graph = graph;
+    public BreadthFirstSearchUseCase(IGraphRepository repository) {
+        this.repository = repository;
     }
 
-    public void createTree(int startVertex) {
+    public void execute(int startVertex) {
+        Graph graph = repository.getGraph();
         int n = graph.getOrder();
         LinkedList<Boolean> visited = new LinkedList<>();
         LinkedList<Integer> visitOrder = new LinkedList<>();
