@@ -2,16 +2,22 @@ package main.java.usecases;
 
 import main.java.domain.Graph;
 import main.java.repositories.GraphRepository;
+import main.java.repositories.IGraphRepository;
 
 public class GetGraphDensityUseCase {
-    private final GraphRepository graphRepository;
+    private final IGraphRepository graphRepository;
 
-    public GetGraphDensityUseCase() {
-        this.graphRepository = new GraphRepository();
+    public GetGraphDensityUseCase(IGraphRepository repository) {
+        this.graphRepository = repository;
     }
 
-    public double execute() {
+    public Double execute() {
         Graph graph = this.graphRepository.getGraph();
+        if (graph == null) {
+            System.out.println("Graph is null");
+            return null;
+        }
+
         int order = graph.getOrder();
         int size = graph.getSize();
 
