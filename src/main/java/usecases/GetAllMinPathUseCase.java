@@ -2,6 +2,7 @@ package main.java.usecases;
 
 import main.java.domain.Edge;
 import main.java.domain.Graph;
+
 import java.util.Arrays;
 
 public class GetAllMinPathUseCase {

@@ -15,7 +15,6 @@ public class HasCycleUseCase {
         this.cycles = new ArrayList<>();
     }
 
-    // Método principal para localizar os ciclos
     public void execute() {
         int n = graph.getOrder();
         Edge[][] adjacencyMatrix = graph.getAdjacencyMatrix();
@@ -29,7 +28,6 @@ public class HasCycleUseCase {
         }
     }
 
-    // Árvore de busca em profundidade modificada para detectar os ciclos e armazená-los
     private void auxDepthFirstSearch(int current, int parent, boolean[] visited, List<Integer> path, Edge[][] adjacencyMatrix) {
         visited[current] = true;
         path.add(current);
@@ -54,7 +52,6 @@ public class HasCycleUseCase {
         path.removeLast();
     }
 
-    // Método responsável por imprimir os ciclos, caso existam
     public void printCycles() {
         if(cycles.isEmpty()) {
             System.out.println("Este grafo não possui ciclos!");
