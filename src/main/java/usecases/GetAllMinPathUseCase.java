@@ -2,22 +2,25 @@ package main.java.usecases;
 
 import main.java.domain.Edge;
 import main.java.domain.Graph;
+import main.java.repositories.IGraphRepository;
 
 import java.util.Arrays;
 
 public class GetAllMinPathUseCase {
-    private final Graph graph;
+    private final IGraphRepository repository;
     public final double[] dt;
     public final int[] rot;
 
-    public GetAllMinPathUseCase(Graph graph) {
+    public GetAllMinPathUseCase(IGraphRepository repository) {
+        this.repository = repository;
+        Graph graph = repository.getGraph();
         int n = graph.getOrder();
-        this.graph = graph;
         this.dt = new double[n];
         this.rot = new int[n];
     }
 
     public void execute(int vertex) {
+        Graph graph = repository.getGraph();
         int n = graph.getOrder();
         Edge[][] adjacencyMatrix = graph.getAdjacencyMatrix();
         boolean[] visited = new boolean[n];
