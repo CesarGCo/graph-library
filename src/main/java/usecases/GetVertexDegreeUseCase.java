@@ -17,8 +17,6 @@ public class GetVertexDegreeUseCase {
             return null;
         }
 
-        vertex = vertex - 1;
-
         if(vertex <0 || vertex > graph.getSize() ) {
             System.out.println("Vertex does not exist");
             return null;
