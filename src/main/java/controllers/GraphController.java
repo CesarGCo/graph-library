@@ -37,6 +37,10 @@ public class GraphController {
     public void BreadthFirstSearch(int startVertex) {
         BreadthFirstSearchUseCase useCase = new BreadthFirstSearchUseCase(repository);
         useCase.execute(startVertex);
-        return;
+    }
+
+    public int getVertexDegree(int vertex) {
+        GetVertexDegreeUseCase useCase = new GetVertexDegreeUseCase(repository);
+        return useCase.execute(vertex);
     }
 }
