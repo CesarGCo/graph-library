@@ -2,6 +2,8 @@ package main.java.controllers;
 import main.java.repositories.GraphRepository;
 import main.java.usecases.*;
 
+import java.util.List;
+
 public class GraphController {
     public GraphRepository repository;
 
@@ -41,6 +43,11 @@ public class GraphController {
 
     public int getVertexDegree(int vertex) {
         GetVertexDegreeUseCase useCase = new GetVertexDegreeUseCase(repository);
+        return useCase.execute(vertex);
+    }
+
+    public List<Integer> getVertexNeighbors(int vertex) {
+        GetVertexNeighborsUseCase useCase = new GetVertexNeighborsUseCase(repository);
         return useCase.execute(vertex);
     }
 }
