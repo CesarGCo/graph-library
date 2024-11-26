@@ -1,18 +1,24 @@
 package main.java.usecases;
 
 import main.java.domain.Graph;
+import main.java.repositories.IGraphRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class IsArticulationVertex {
-    private final Graph graph;
+public class IsArticulationVertexUseCase {
+    private final IGraphRepository repository;
 
-    public IsArticulationVertex(Graph graph) {
-        this.graph = graph;
+    public IsArticulationVertexUseCase(IGraphRepository repository) {
+        this.repository = repository;
     }
 
     public boolean execute(int vertex) {
+        Graph graph = this.repository.getGraph();
+        if (graph == null) {
+            return false;
+        }
+
         int size = graph.getOrder();
         boolean[] visited = new boolean[size];
         List<Integer> initialComponent = dfs(0, vertex, visited);
@@ -35,6 +41,7 @@ public class IsArticulationVertex {
     }
 
     private void dfsHelper(int current, int excludedVertex, boolean[] visited, List<Integer> component) {
+        Graph  graph = this.repository.getGraph();
         if (current == excludedVertex || visited[current]) return;
 
         visited[current] = true;

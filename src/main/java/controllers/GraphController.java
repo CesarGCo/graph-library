@@ -50,4 +50,9 @@ public class GraphController {
         GetVertexNeighborsUseCase useCase = new GetVertexNeighborsUseCase(repository);
         return useCase.execute(vertex);
     }
+
+    public boolean IsArticulationVertex(int vertex) {
+        IsArticulationVertexUseCase useCase = new IsArticulationVertexUseCase(repository);
+        return useCase.execute(vertex);
+    }
 }
