@@ -3,7 +3,9 @@ package main.java.usecases;
 import main.java.domain.Edge;
 import main.java.domain.Graph;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class GetAllMinPathUseCase {
     private final Graph graph;
@@ -43,6 +45,7 @@ public class GetAllMinPathUseCase {
                 }
             }
         }
+        printAllMinPath(vertex);
     }
 
     private int minDistance(boolean[] visited) {
@@ -56,5 +59,34 @@ public class GetAllMinPathUseCase {
             }
         }
         return minIndex;
+    }
+
+    public void printAllMinPath(int vertex) {
+        int aux;
+        List<Integer> path = new ArrayList<>();
+        System.out.printf("Segue abaixo as distâncias e o menor caminho do vértice %d para os demais:\n", vertex + 1);
+        for (int i = 0; i < dt.length; i++){
+            System.out.printf("%d à %d - Distância total: ", vertex+1, i+1);
+
+            if(dt[i] == Double.MAX_VALUE) System.out.println("infinito");
+            else  System.out.println(dt[i]);
+
+            System.out.print("Caminho mínimo: ");
+            aux = i;
+            while (aux != -1) {
+                path.addFirst(aux);
+                aux = rot[aux];
+            }
+            for (int j = 0; j < path.size(); j++) {
+                if(path.getFirst() != vertex) {
+                    System.out.println("Não existe esse caminho");
+                    break;
+                }
+                if (j > 0) System.out.print(" -> ");
+                System.out.print(path.get(j) + 1);
+            }
+            System.out.print("\n\n");
+            path.clear();
+        }
     }
 }
