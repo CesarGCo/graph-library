@@ -44,10 +44,10 @@ public class GetRelatedComponentsUseCase {
 
     private void printConnnectedComponents() {
         if(connectedComponents.isEmpty()) {
-            System.out.println("Este grafo não possui componentes conexas!");
+            System.out.println("This graph has no connected components!");
             return;
         }
-        System.out.println("Segue abaixo todas as componentes conexas do grafo:");
+        System.out.println("Below are all the connected components of the graph:");
         for(int i = 0; i < connectedComponents.size(); i++) {
             System.out.println( (i+ 1) + " : " + connectedComponents.get(i));
         }

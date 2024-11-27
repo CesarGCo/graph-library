@@ -67,14 +67,14 @@ public class GetAllMinPathUseCase {
     public void printAllMinPath(int vertex) {
         int aux;
         List<Integer> path = new ArrayList<>();
-        System.out.printf("Segue abaixo as distâncias e o menor caminho do vértice %d para os demais:\n", vertex + 1);
+        System.out.printf("Below are the distances and the shortest path from vertex %d to the others:\n", vertex + 1);
         for (int i = 0; i < dt.length; i++){
-            System.out.printf("%d à %d - Distância total: ", vertex+1, i+1);
+            System.out.printf("%d to %d - Total Distance: ", vertex+1, i+1);
 
-            if(dt[i] == Double.MAX_VALUE) System.out.println("infinito");
+            if(dt[i] == Double.MAX_VALUE) System.out.println("infinity");
             else  System.out.println(dt[i]);
 
-            System.out.print("Caminho mínimo: ");
+            System.out.print("Shortest path: ");
             aux = i;
             while (aux != -1) {
                 path.addFirst(aux);
@@ -82,7 +82,7 @@ public class GetAllMinPathUseCase {
             }
             for (int j = 0; j < path.size(); j++) {
                 if(path.getFirst() != vertex) {
-                    System.out.println("Não existe esse caminho");
+                    System.out.println("Does not exist");
                     break;
                 }
                 if (j > 0) System.out.print(" -> ");

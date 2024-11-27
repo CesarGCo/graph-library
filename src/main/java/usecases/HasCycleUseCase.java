@@ -56,10 +56,10 @@ public class HasCycleUseCase {
 
     private void printCycles() {
         if(cycles.isEmpty()) {
-            System.out.println("Este grafo não possui ciclos!");
+            System.out.println("This graph has no cycles!");
             return;
         }
-        System.out.println("Segue abaixo todas os ciclos do grafo:");
+        System.out.println("Below are all the cycles of the graph:");
         for(int i = 0; i < cycles.size(); i++) {
             System.out.println( (i+ 1) + " : " + cycles.get(i));
         }
