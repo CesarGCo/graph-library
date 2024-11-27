@@ -27,11 +27,13 @@ public class GetRelatedComponentsUseCase {
                 connectedComponents.add(component);
             }
         }
+
+        printConnnectedComponents();
     }
 
     private void auxDepthFirstSearch(int vertex, Edge[][] adjacencyMatrix, boolean[] visited, List<Integer> component) {
         visited[vertex] = true;
-        component.add(vertex);
+        component.add(vertex + 1);
 
         for (int i = 0; i < adjacencyMatrix.length; i++) {
             if (!visited[i] && adjacencyMatrix[vertex][i].isEdge()) {
@@ -40,7 +42,7 @@ public class GetRelatedComponentsUseCase {
         }
     }
 
-    public void printConnnectedComponents() {
+    private void printConnnectedComponents() {
         if(connectedComponents.isEmpty()) {
             System.out.println("Este grafo não possui componentes conexas!");
             return;

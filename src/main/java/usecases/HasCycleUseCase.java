@@ -26,6 +26,8 @@ public class HasCycleUseCase {
                 auxDepthFirstSearch(v, -1, visited, path, adjacencyMatrix);
             }
         }
+
+        printCycles();
     }
 
     private void auxDepthFirstSearch(int current, int parent, boolean[] visited, List<Integer> path, Edge[][] adjacencyMatrix) {
@@ -41,9 +43,9 @@ public class HasCycleUseCase {
                     int startIndex = path.indexOf(neighbor);
                     if (startIndex != -1) {
                         for (int i = startIndex; i < path.size(); i++) {
-                            cycle.add(path.get(i));
+                            cycle.add(path.get(i) + 1);
                         }
-                        cycle.add(neighbor);
+                        cycle.add(neighbor + 1);
                         cycles.add(cycle);
                     }
                 }
@@ -52,7 +54,7 @@ public class HasCycleUseCase {
         path.removeLast();
     }
 
-    public void printCycles() {
+    private void printCycles() {
         if(cycles.isEmpty()) {
             System.out.println("Este grafo não possui ciclos!");
             return;
