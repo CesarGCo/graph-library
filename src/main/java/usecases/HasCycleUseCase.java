@@ -2,20 +2,22 @@ package main.java.usecases;
 
 import main.java.domain.Edge;
 import main.java.domain.Graph;
+import main.java.repositories.IGraphRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class HasCycleUseCase {
-    private final Graph graph;
+    private final IGraphRepository repository;
     private final List<List<Integer>> cycles;
 
-    public HasCycleUseCase(Graph graph) {
-        this.graph = graph;
+    public HasCycleUseCase(IGraphRepository repository) {
+        this.repository = repository;
         this.cycles = new ArrayList<>();
     }
 
     public void execute() {
+        Graph graph = repository.getGraph();
         int n = graph.getOrder();
         Edge[][] adjacencyMatrix = graph.getAdjacencyMatrix();
         boolean[] visited = new boolean[n];

@@ -2,20 +2,22 @@ package main.java.usecases;
 
 import main.java.domain.Graph;
 import main.java.domain.Edge;
+import main.java.repositories.IGraphRepository;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GetRelatedComponentsUseCase {
-    private final Graph graph;
+    private final IGraphRepository repository;
     private final List<List<Integer>> connectedComponents;
 
-    public GetRelatedComponentsUseCase(Graph graph) {
-        this.graph = graph;
+    public GetRelatedComponentsUseCase(IGraphRepository repository) {
+        this.repository = repository;
         this.connectedComponents = new ArrayList<>();
     }
 
     public void execute() {
+        Graph graph = repository.getGraph();
         int n = graph.getOrder();
         Edge[][] adjacencyMatrix = graph.getAdjacencyMatrix();
         boolean[] visited = new boolean[n];
