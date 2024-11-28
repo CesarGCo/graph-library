@@ -55,4 +55,19 @@ public class GraphController {
         IsArticulationVertexUseCase useCase = new IsArticulationVertexUseCase(repository);
         return useCase.execute(vertex);
     }
+
+    public void getAllMinPath(int vertex) {
+        GetAllMinPathUseCase useCase = new GetAllMinPathUseCase(repository);
+        useCase.execute(vertex);
+    }
+
+    public void getRelatedComponents() {
+        GetRelatedComponentsUseCase useCase = new GetRelatedComponentsUseCase(repository);
+        useCase.execute();
+    }
+
+    public void hasCycles() {
+        HasCycleUseCase useCase = new HasCycleUseCase(repository);
+        useCase.execute();
+    }
 }
