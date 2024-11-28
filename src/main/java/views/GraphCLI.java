@@ -37,6 +37,9 @@ public class GraphCLI {
         System.out.println("7. Get Vertex Degree");
         System.out.println("8. Get Vertex Neighbors");
         System.out.println("9. Check Articulation Vertex");
+        System.out.println("10. Get All Minimum Paths from a Vertex");
+        System.out.println("11. Get Connected Components");
+        System.out.println("12. Check if Graph Has Cycles");
         System.out.println("0. Exit");
         System.out.println("================================");
     }
@@ -58,6 +61,9 @@ public class GraphCLI {
                 case 7 -> getVertexDegree();
                 case 8 -> getVertexNeighbors();
                 case 9 -> checkArticulationVertex();
+                case 10 -> getAllMinPaths();
+                case 11 -> getRelatedComponents();
+                case 12 -> checkHasCycles();
                 default -> System.out.println("Invalid choice. Please try again.");
             }
         } catch (Exception e) {
@@ -67,7 +73,7 @@ public class GraphCLI {
 
     private void createGraphFromFile() {
         System.out.print("Enter the file path: ");
-        scanner.nextLine();
+        scanner.nextLine(); // Consume the newline
         String filePath = scanner.nextLine();
 
         Reader reader = new Reader(filePath, controller);
@@ -112,5 +118,22 @@ public class GraphCLI {
         int vertex = scanner.nextInt();
         boolean isArticulation = controller.IsArticulationVertex(vertex);
         System.out.println("Vertex " + vertex + " is " + (isArticulation ? "" : "not ") + "an articulation vertex.");
+    }
+
+    private void getAllMinPaths() {
+        System.out.print("Enter the starting vertex: ");
+        int vertex = scanner.nextInt();
+        controller.getAllMinPath(vertex);
+        System.out.println("All minimum paths calculated from vertex " + vertex);
+    }
+
+    private void getRelatedComponents() {
+        controller.getRelatedComponents();
+        System.out.println("Connected components calculated.");
+    }
+
+    private void checkHasCycles() {
+        controller.hasCycles();
+        System.out.println("Cycle check completed.");
     }
 }
