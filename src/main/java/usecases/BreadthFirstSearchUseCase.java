@@ -1,4 +1,5 @@
 package main.java.usecases;
+
 import main.java.domain.Graph;
 import main.java.domain.Edge;
 import main.java.repositories.IGraphRepository;
@@ -20,7 +21,7 @@ public class BreadthFirstSearchUseCase {
         LinkedList<String> nonTreeEdges = new LinkedList<>();
         LinkedList<Integer> queue = new LinkedList<>();
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 0; i <= n; i++) {
             visited.add(false);
         }
 
@@ -29,10 +30,10 @@ public class BreadthFirstSearchUseCase {
 
         while (!queue.isEmpty()) {
             int currentVertex = queue.poll();
-            visitOrder.add(currentVertex+1);
+            visitOrder.add(currentVertex);
 
-            for (int i = 0; i < n; i++) {
-                Edge edge = graph.getAdjacencyMatrix()[currentVertex][i];
+            for (int i = 1; i <= n; i++) {
+                Edge edge = graph.getAdjacencyMatrix()[currentVertex - 1][i - 1];
 
                 if (edge.isEdge()) {
                     if (!visited.get(i)) {
@@ -51,7 +52,7 @@ public class BreadthFirstSearchUseCase {
         System.out.println("Sequência de vértices visitados: " + visitOrder);
         System.out.println("Arestas não pertencentes à árvore de busca em largura:");
         for (String edge : nonTreeEdges) {
-            System.out.println(edge+1);
+            System.out.println(edge);
         }
     }
 }
