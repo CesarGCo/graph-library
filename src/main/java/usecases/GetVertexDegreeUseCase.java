@@ -17,14 +17,17 @@ public class GetVertexDegreeUseCase {
             return null;
         }
 
-        if(vertex <0 || vertex > graph.getSize() ) {
+        if (vertex < 1 || vertex > graph.getSize()) {
             System.out.println("Vertex does not exist");
             return null;
         }
+
+        int adjustedVertex = vertex - 1;
+
         int degree = 0;
         int size = graph.getOrder();
         for (int i = 0; i < size; i++) {
-            if (graph.getAdjacencyMatrix()[vertex][i].isEdge()) {
+            if (graph.getAdjacencyMatrix()[adjustedVertex][i].isEdge()) {
                 degree++;
             }
         }
