@@ -29,7 +29,7 @@ public class BreadthFirstSearchUseCase {
 
         while (!queue.isEmpty()) {
             int currentVertex = queue.poll();
-            visitOrder.add(currentVertex);
+            visitOrder.add(currentVertex+1);
 
             for (int i = 0; i < n; i++) {
                 Edge edge = graph.getAdjacencyMatrix()[currentVertex][i];
@@ -51,7 +51,7 @@ public class BreadthFirstSearchUseCase {
         System.out.println("Sequência de vértices visitados: " + visitOrder);
         System.out.println("Arestas não pertencentes à árvore de busca em largura:");
         for (String edge : nonTreeEdges) {
-            System.out.println(edge);
+            System.out.println(edge+1);
         }
     }
 }
