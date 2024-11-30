@@ -53,6 +53,7 @@ public class BreadthFirstSearchUseCase {
         System.out.println("Arestas não pertencentes à árvore de busca em largura:");
         for (String edge : nonTreeEdges) {
             System.out.println(edge);
+
         }
     }
 }
