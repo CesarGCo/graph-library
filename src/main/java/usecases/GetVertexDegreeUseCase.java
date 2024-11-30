@@ -22,7 +22,7 @@ public class GetVertexDegreeUseCase {
             return null;
         }
 
-        int adjustedVertex = vertex - 1;
+        int adjustedVertex = vertex + 1;
 
         int degree = 0;
         int size = graph.getOrder();
