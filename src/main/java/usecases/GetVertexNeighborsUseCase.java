@@ -16,19 +16,22 @@ public class GetVertexNeighborsUseCase {
     public List<Integer> execute(int vertex) {
         Graph graph = this.repository.getGraph();
 
-        if(graph == null) {
+        if (graph == null) {
             return new ArrayList<>();
         }
 
-        if (vertex <0 || vertex > graph.getSize()) {
+        if (vertex < 1 || vertex > graph.getSize()) {
             return new ArrayList<>();
         }
+
+        int adjustedVertex = vertex - 1;
 
         List<Integer> neighbors = new ArrayList<>();
         int size = graph.getOrder();
         for (int i = 0; i < size; i++) {
-            if (graph.getAdjacencyMatrix()[vertex][i].isEdge()) {
-                neighbors.add(i);
+            if (graph.getAdjacencyMatrix()[adjustedVertex][i].isEdge()) {
+                // Adiciona 1 para retornar ao intervalo baseado em 1
+                neighbors.add(i + 1);
             }
         }
         return neighbors;
