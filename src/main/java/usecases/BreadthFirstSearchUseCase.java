@@ -49,8 +49,8 @@ public class BreadthFirstSearchUseCase {
             }
         }
 
-        System.out.println("Sequência de vértices visitados: " + visitOrder);
-        System.out.println("Arestas não pertencentes à árvore de busca em largura:");
+        System.out.println("Sequence of vertices visited: " + visitOrder);
+        System.out.println("Edges not belonging to the breadth-first search tree:");
         for (String edge : nonTreeEdges) {
             System.out.println(edge);
         }
