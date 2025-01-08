@@ -2,6 +2,7 @@ package main.java.views;
 
 import main.java.controllers.GraphController;
 import main.java.fileio.Reader;
+import main.java.usecases.GetMinVertexCoverUseCase;
 
 import java.util.Scanner;
 
@@ -40,6 +41,7 @@ public class GraphCLI {
         System.out.println("10. Get All Minimum Paths from a Vertex");
         System.out.println("11. Get Connected Components");
         System.out.println("12. Check if Graph Has Cycles");
+        System.out.println("13. Get minimum vertex coverage");
         System.out.println("0. Exit");
         System.out.println("================================");
     }
@@ -64,6 +66,7 @@ public class GraphCLI {
                 case 10 -> getAllMinPaths();
                 case 11 -> getRelatedComponents();
                 case 12 -> checkHasCycles();
+                case 13 -> getMinVertexCover();
                 default -> System.out.println("Invalid choice. Please try again.");
             }
         } catch (Exception e) {
@@ -135,5 +138,10 @@ public class GraphCLI {
     private void checkHasCycles() {
         controller.hasCycles();
         System.out.println("Cycle check completed.");
+    }
+
+    private void getMinVertexCover() {
+        controller.minVertexCover();
+        System.out.println("Minimum vertex coverage calculated");
     }
 }
