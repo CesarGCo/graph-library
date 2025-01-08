@@ -70,4 +70,9 @@ public class GraphController {
         HasCycleUseCase useCase = new HasCycleUseCase(repository);
         useCase.execute();
     }
+
+    public void minVertexCover() {
+        GetMinVertexCoverUseCase useCase = new GetMinVertexCoverUseCase(repository);
+        useCase.execute();
+    }
 }
