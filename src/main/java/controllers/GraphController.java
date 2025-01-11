@@ -75,4 +75,10 @@ public class GraphController {
         GetMinVertexCoverUseCase useCase = new GetMinVertexCoverUseCase(repository);
         useCase.execute();
     }
+
+    public int getMaximumMatching() {
+        MaximumMatchingUseCase useCase = new MaximumMatchingUseCase(repository);
+        return useCase.execute();
+    }
+
 }

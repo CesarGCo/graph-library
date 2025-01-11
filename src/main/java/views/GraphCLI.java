@@ -3,6 +3,7 @@ package main.java.views;
 import main.java.controllers.GraphController;
 import main.java.fileio.Reader;
 import main.java.usecases.GetMinVertexCoverUseCase;
+import main.java.usecases.MaximumMatchingUseCase;
 
 import java.util.Scanner;
 
@@ -42,6 +43,7 @@ public class GraphCLI {
         System.out.println("11. Get Connected Components");
         System.out.println("12. Check if Graph Has Cycles");
         System.out.println("13. Get minimum vertex coverage");
+        System.out.println("14. Get maximum matching");
         System.out.println("0. Exit");
         System.out.println("================================");
     }
@@ -67,6 +69,10 @@ public class GraphCLI {
                 case 11 -> getRelatedComponents();
                 case 12 -> checkHasCycles();
                 case 13 -> getMinVertexCover();
+                case 14 -> {
+                    int maximumMatching = controller.getMaximumMatching();
+                    System.out.println("Maximum Matching: " + maximumMatching);
+                }
                 default -> System.out.println("Invalid choice. Please try again.");
             }
         } catch (Exception e) {
