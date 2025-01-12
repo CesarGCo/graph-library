@@ -1,9 +1,9 @@
 package main.java.views;
 
 import main.java.controllers.GraphController;
+import main.java.domain.Graph;
 import main.java.fileio.Reader;
-import main.java.usecases.GetMinVertexCoverUseCase;
-import main.java.usecases.MaximumMatchingUseCase;
+import main.java.fileio.Writer;
 
 import java.util.Scanner;
 
@@ -44,6 +44,7 @@ public class GraphCLI {
         System.out.println("12. Check if Graph Has Cycles");
         System.out.println("13. Get minimum vertex coverage");
         System.out.println("14. Get maximum matching");
+        System.out.println("15. Calculate Minimum Spanning Tree (AGM) and Save to File");
         System.out.println("0. Exit");
         System.out.println("================================");
     }
@@ -73,6 +74,7 @@ public class GraphCLI {
                     int maximumMatching = controller.getMaximumMatching();
                     System.out.println("Maximum Matching: " + maximumMatching);
                 }
+                case 15 -> calculateMinimumSpanningTreeAndSave();
                 default -> System.out.println("Invalid choice. Please try again.");
             }
         } catch (Exception e) {
@@ -149,5 +151,18 @@ public class GraphCLI {
     private void getMinVertexCover() {
         controller.minVertexCover();
         System.out.println("Minimum vertex coverage calculated");
+    }
+
+    private void calculateMinimumSpanningTreeAndSave() {
+        try {
+            System.out.print("Enter the file path to save the MST: ");
+            scanner.nextLine();
+            String filePath = scanner.nextLine();
+            Graph mst = controller.calculateMinimumSpanningTree();
+            Writer writer = new Writer(filePath);
+            writer.saveGraph(mst);
+        } catch (Exception e) {
+            System.out.println("Error calculating or saving the MST: " + e.getMessage());
+        }
     }
 }
