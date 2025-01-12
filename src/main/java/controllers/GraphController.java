@@ -1,4 +1,5 @@
 package main.java.controllers;
+import main.java.domain.Graph;
 import main.java.repositories.GraphRepository;
 import main.java.usecases.*;
 
@@ -78,6 +79,11 @@ public class GraphController {
 
     public int getMaximumMatching() {
         MaximumMatchingUseCase useCase = new MaximumMatchingUseCase(repository);
+        return useCase.execute();
+    }
+
+    public Graph calculateMinimumSpanningTree() {
+        CalculateMinimumSpanningTreeUseCase useCase = new CalculateMinimumSpanningTreeUseCase(repository);
         return useCase.execute();
     }
 
