@@ -30,7 +30,6 @@ public class GetVertexNeighborsUseCase {
         int size = graph.getOrder();
         for (int i = 0; i < size; i++) {
             if (graph.getAdjacencyMatrix()[adjustedVertex][i].isEdge()) {
-                // Adiciona 1 para retornar ao intervalo baseado em 1
                 neighbors.add(i + 1);
             }
         }

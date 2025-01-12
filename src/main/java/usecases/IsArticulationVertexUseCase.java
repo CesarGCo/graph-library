@@ -27,13 +27,11 @@ public class IsArticulationVertexUseCase {
             visited[i] = false;
         }
 
-        // Recalculando componente conexa sem o vértice dado
         List<Integer> newComponent = dfs(vertex == 0 ? 1 : 0, vertex, visited);
 
         return initialComponent.size() > newComponent.size();
     }
 
-    // Utilizando a Busca em Profundidade para ajudar a determinar a conectividade de um grafo
     private List<Integer> dfs(int start, int excludedVertex, boolean[] visited) {
         List<Integer> component = new ArrayList<>();
         dfsHelper(start, excludedVertex, visited, component);

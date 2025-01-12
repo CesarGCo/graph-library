@@ -22,17 +22,14 @@ public class MaximumMatchingUseCase {
         boolean[] visited = new boolean[order];
         int[] match = new int[order];
 
-        // Inicializa as correspondências como -1 (nenhuma correspondência)
         for (int i = 0; i < order; i++) {
             match[i] = -1;
         }
 
         int matchingCount = 0;
 
-        // Tenta encontrar um caminho de aumento para cada vértice
         for (int vertex = 0; vertex < order; vertex++) {
             if (match[vertex] == -1) {
-                // Redefine o array de visitados para cada DFS
                 for (int i = 0; i < order; i++) {
                     visited[i] = false;
                 }
@@ -53,7 +50,6 @@ public class MaximumMatchingUseCase {
             if (adjacencyMatrix[vertex][neighbor].isEdge() && !visited[neighbor]) {
                 visited[neighbor] = true;
 
-                // Se o vizinho não está emparelhado ou podemos encontrar um caminho de aumento
                 if (match[neighbor] == -1 || dfs(match[neighbor], graph, visited, match)) {
                     match[vertex] = neighbor;
                     match[neighbor] = vertex;

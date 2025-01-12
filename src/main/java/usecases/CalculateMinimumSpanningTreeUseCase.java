@@ -13,7 +13,6 @@ public class CalculateMinimumSpanningTreeUseCase {
 
     public Graph execute() {
         Graph inputGraph = this.repository.getGraph();
-
         if (inputGraph == null) {
             System.out.println("Graph is null");
             return null;
@@ -21,7 +20,6 @@ public class CalculateMinimumSpanningTreeUseCase {
 
         int order = inputGraph.getOrder();
         Edge[][] adjacencyMatrix = inputGraph.getAdjacencyMatrix();
-
         Graph mstGraph = new Graph(order);
 
         boolean[] visited = new boolean[order];
@@ -34,11 +32,9 @@ public class CalculateMinimumSpanningTreeUseCase {
         }
 
         key[0] = 0;
-
         for (int count = 0; count < order - 1; count++) {
             int u = minKey(key, visited, order);
             visited[u] = true;
-
             for (int v = 0; v < order; v++) {
                 if (adjacencyMatrix[u][v].isEdge() &&
                         !visited[v] &&
@@ -48,7 +44,6 @@ public class CalculateMinimumSpanningTreeUseCase {
                 }
             }
         }
-
         for (int i = 1; i < order; i++) {
             if (parent[i] != -1) {
                 double weight = adjacencyMatrix[i][parent[i]].getWeight();
