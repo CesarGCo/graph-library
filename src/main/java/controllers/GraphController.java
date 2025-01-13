@@ -87,4 +87,9 @@ public class GraphController {
         return useCase.execute();
     }
 
+    public void CalculateClosenessCentrality(int vertex) {
+           CalculateClosenessCentralityUseCase useCase = new CalculateClosenessCentralityUseCase(repository);
+           useCase.execute(vertex);
+   }
+
 }

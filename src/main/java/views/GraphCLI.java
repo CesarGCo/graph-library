@@ -1,3 +1,4 @@
+
 package main.java.views;
 
 import main.java.controllers.GraphController;
@@ -45,6 +46,7 @@ public class GraphCLI {
         System.out.println("13. Get minimum vertex coverage");
         System.out.println("14. Get maximum matching");
         System.out.println("15. Calculate Minimum Spanning Tree (AGM) and Save to File");
+        System.out.println("16. Calculate Closeness Centrality");
         System.out.println("0. Exit");
         System.out.println("================================");
     }
@@ -75,6 +77,7 @@ public class GraphCLI {
                     System.out.println("Maximum Matching: " + maximumMatching);
                 }
                 case 15 -> calculateMinimumSpanningTreeAndSave();
+                case 16 -> calculateClosenessCentrality();
                 default -> System.out.println("Invalid choice. Please try again.");
             }
         } catch (Exception e) {
@@ -165,4 +168,16 @@ public class GraphCLI {
             System.out.println("Error calculating or saving the MST: " + e.getMessage());
         }
     }
+
+    private void calculateClosenessCentrality() {
+        System.out.print("Enter the vertex to calculate closeness centrality: ");
+        int vertex = scanner.nextInt();
+        try {
+            controller.CalculateClosenessCentrality(vertex);
+        } catch (Exception e) {
+            System.out.println("Error calculating closeness centrality: " + e.getMessage());
+        }
+    }
 }
+
+
